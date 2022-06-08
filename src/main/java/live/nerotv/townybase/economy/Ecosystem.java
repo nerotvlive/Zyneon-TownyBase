@@ -4,7 +4,6 @@ import com.zyneonstudios.api.sql.SQLite;
 import live.nerotv.townybase.Main;
 import live.nerotv.townybase.api.PlayerAPI;
 import org.bukkit.Bukkit;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,9 +12,10 @@ import java.util.UUID;
 
 public class Ecosystem implements Economy {
 
-    private static final SQLite sql = new SQLite("plugins/TownyBase/eco.sql");
+    private static SQLite sql;
 
     public static void checkTable() {
+        sql = new SQLite("plugins/TownyBase/eco.sql");
         try {
             PreparedStatement ps = sql.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS ecodatabase (UUID VARCHAR(100),Eco DOUBLE(30,2))");
             ps.executeUpdate();

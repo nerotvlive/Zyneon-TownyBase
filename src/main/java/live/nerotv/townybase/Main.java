@@ -27,13 +27,13 @@ public class Main {
     public static Economy getEco() { return eco; }
 
     public static void onLoad() {
+        API.initConfig();
         API.sendInit(false);
         Zyneon.getZyneonServer().sendMessage(" §0 ");
         Zyneon.getZyneonServer().sendMessage(" §0 ");
         Zyneon.getZyneonServer().sendMessage("Lade plugin...");
         Zyneon.getZyneonServer().sendMessage(" §0 ");
         Zyneon.getZyneonServer().sendMessage("Config-Datei wird überprüft und ersellt, ergänzt oder korrigiert...");
-        API.initConfig();
         Zyneon.getZyneonServer().sendMessage("Config-Datei wurde initialisiert!");
         Zyneon.getZyneonServer().sendMessage("Plugin geladen! ");
         Zyneon.getZyneonServer().sendMessage(" §0 ");
@@ -42,13 +42,13 @@ public class Main {
     }
 
     public static void onEnable() {
+        API.initConfig();
         API.sendInit(true);
         Zyneon.getZyneonServer().sendMessage(" §0 ");
         Zyneon.getZyneonServer().sendMessage(" §0 ");
         Zyneon.getZyneonServer().sendMessage("Aktiviere plugin...");
         API.date = Zyneon.getAPI().getTime();
         Zyneon.getZyneonServer().sendMessage(" §0 ");
-        API.initConfig();
         API.config.reloadConfig();
         setupEconomy();
         initCommands();

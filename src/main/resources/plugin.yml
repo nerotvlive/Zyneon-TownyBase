@@ -12,6 +12,7 @@ softdepend:
 depend:
   - Towny
   - Vault
+  - ZyneonAPI
 
 loadbefore:
   - GChestShop
