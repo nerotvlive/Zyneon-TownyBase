@@ -1,5 +1,6 @@
 package live.nerotv.townybase.listener;
 
+import com.zyneonstudios.api.Zyneon;
 import live.nerotv.townybase.Main;
 import live.nerotv.townybase.api.API;
 import live.nerotv.townybase.api.PlayerAPI;
@@ -48,7 +49,7 @@ public class PlayerChat implements Listener {
             p.playSound(p.getLocation(),Sound.ENTITY_BAT_DEATH,100,100);
             p.playSound(p.getLocation(),Sound.ENTITY_BLAZE_DEATH,100,100);
             p.playSound(p.getLocation(),Sound.BLOCK_ANVIL_BREAK,100,100);
-            API.sendMessage("§4"+p.getName()+"§c hat versucht §4\""+MSG+"§4\"§c zu schreiben, die Nachricht wurde aber blockiert!");
+            Zyneon.getZyneonServer().sendErrorMessage("§4" + p.getName() + "§c hat versucht §4\"" + MSG + "§4\"§c zu schreiben, die Nachricht wurde aber blockiert!");
         } else {
             e.setFormat("%name%§8 » §7%msg%".replace("%name%", Name).replace("%msg%", MSG));
         }

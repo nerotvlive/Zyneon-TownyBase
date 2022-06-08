@@ -1,5 +1,6 @@
 package live.nerotv.townybase.manager;
 
+import com.zyneonstudios.api.Zyneon;
 import live.nerotv.townybase.Main;
 import live.nerotv.townybase.api.API;
 import live.nerotv.townybase.api.PlayerAPI;
@@ -38,13 +39,12 @@ public class BroadcastManager {
 
     private static void autoRenew(BukkitScheduler scheduler) {
         int scheduleId = scheduler.scheduleSyncDelayedTask(Main.getInstance(), () -> {
-            if(!API.date.equals(API.getTime())) {
-                API.date = API.getTime();
+            if(!API.date.equals(Zyneon.getAPI().getTime())) {
+                API.date = Zyneon.getAPI().getTime();
                 for (Player all : Bukkit.getOnlinePlayers()) {
                     PlayerAPI.renewScoreboard(all);
                 }
             }
-            API.checkForRestart();
             autoRenew(scheduler);
         },15*20);
     }

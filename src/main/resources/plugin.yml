@@ -1,5 +1,5 @@
 name: TownyBase
-version: 0.0.33 (E33)
+version: 0.0.34
 website: https://nerotv.live/townybase
 api-version: 1.18
 description: TownyBase by nerotvlive
@@ -8,8 +8,6 @@ main: live.nerotv.Preloader
 
 softdepend:
   - floodgate
-  - LuckPerms
-  - ProtocolLib
 
 depend:
   - Towny

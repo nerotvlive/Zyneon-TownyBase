@@ -1,8 +1,7 @@
 package live.nerotv.townybase.economy;
 
+import com.zyneonstudios.api.sql.SQLite;
 import live.nerotv.townybase.Main;
-import live.nerotv.townybase.api.API;
-import live.nerotv.townybase.api.MySQL;
 import live.nerotv.townybase.api.PlayerAPI;
 import org.bukkit.Bukkit;
 
@@ -14,17 +13,14 @@ import java.util.UUID;
 
 public class Ecosystem implements Economy {
 
-    public static boolean checkTable() {
-        if(!MySQL.isConnected()) {
-            MySQL.connect();
-        }
+    private static final SQLite sql = new SQLite("plugins/TownyBase/eco.sql");
+
+    public static void checkTable() {
         try {
-            PreparedStatement ps = MySQL.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS ecodatabase (UUID VARCHAR(100),Eco DOUBLE(30,2))");
+            PreparedStatement ps = sql.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS ecodatabase (UUID VARCHAR(100),Eco DOUBLE(30,2))");
             ps.executeUpdate();
-            return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
     }
 
@@ -47,16 +43,13 @@ public class Ecosystem implements Economy {
     }
 
     public boolean hasAccount(UUID uuid) {
-        if(API.mySQL) {
-            return hasAccountSQL(uuid);
-        }
-        return false;
+        return hasAccountSQL(uuid);
     }
 
     public boolean hasAccountSQL(UUID uuid) {
         checkTable();
         try {
-            PreparedStatement ps = MySQL.getConnection().prepareStatement("SELECT Eco FROM ecodatabase WHERE UUID = ?");
+            PreparedStatement ps = sql.getConnection().prepareStatement("SELECT Eco FROM ecodatabase WHERE UUID = ?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             return rs.next();
@@ -67,17 +60,13 @@ public class Ecosystem implements Economy {
     }
 
     public boolean delete(UUID uuid) {
-        if(!API.mySQL) {
-            return false;
-        } else {
-            return deleteSQL(uuid);
-        }
+        return deleteSQL(uuid);
     }
 
     public boolean deleteSQL(UUID uuid) {
         try {
             if (hasAccountSQL(uuid)) {
-                PreparedStatement ps = MySQL.getConnection().prepareStatement("DELETE FROM ecodatabase WHERE UUID = ?");
+                PreparedStatement ps = sql.getConnection().prepareStatement("DELETE FROM ecodatabase WHERE UUID = ?");
                 ps.setString(1, uuid.toString());
                 ps.executeUpdate();
             }
@@ -97,11 +86,7 @@ public class Ecosystem implements Economy {
     }
 
     public boolean set(UUID uuid, double amount) {
-        if(API.mySQL) {
-            return setSQL(uuid,amount);
-        } else {
-            return false;
-        }
+        return setSQL(uuid,amount);
     }
 
     public boolean setSQL(UUID uuid, double amount) {
@@ -112,11 +97,11 @@ public class Ecosystem implements Economy {
         } else {
             try {
                 if (hasAccountSQL(uuid)) {
-                    PreparedStatement ps = MySQL.getConnection().prepareStatement("DELETE FROM ecodatabase WHERE UUID = ?");
+                    PreparedStatement ps = sql.getConnection().prepareStatement("DELETE FROM ecodatabase WHERE UUID = ?");
                     ps.setString(1, SID);
                     ps.executeUpdate();
                 }
-                PreparedStatement ps = MySQL.getConnection().prepareStatement("INSERT INTO ecodatabase (UUID,Eco) VALUES (?,?)");
+                PreparedStatement ps = sql.getConnection().prepareStatement("INSERT INTO ecodatabase (UUID,Eco) VALUES (?,?)");
                 ps.setString(1, SID);
                 ps.setDouble(2, amount);
                 ps.executeUpdate();
@@ -136,11 +121,7 @@ public class Ecosystem implements Economy {
     }
 
     public PlayerBalance getBalance(UUID uuid) {
-        if(API.mySQL) {
-            return getBalanceSQL(uuid);
-        } else {
-            return null;
-        }
+        return getBalanceSQL(uuid);
     }
 
     public PlayerBalance getBalanceSQL(UUID uuid) {
@@ -148,7 +129,7 @@ public class Ecosystem implements Economy {
         double data;
         if (hasAccount(uuid)) {
             try {
-                PreparedStatement ps = MySQL.getConnection().prepareStatement("SELECT Eco FROM ecodatabase WHERE UUID = ?");
+                PreparedStatement ps = sql.getConnection().prepareStatement("SELECT Eco FROM ecodatabase WHERE UUID = ?");
                 ps.setString(1, uuid.toString());
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {

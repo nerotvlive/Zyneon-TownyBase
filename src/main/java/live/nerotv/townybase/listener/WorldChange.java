@@ -1,7 +1,10 @@
 package live.nerotv.townybase.listener;
 
 import com.palmergames.bukkit.towny.TownyAPI;
+import com.zyneonstudios.api.Zyneon;
+import com.zyneonstudios.api.utils.user.User;
 import live.nerotv.townybase.api.API;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -17,7 +20,9 @@ public class WorldChange implements Listener {
     public void onBreak(BlockBreakEvent e) {
         if(TownyAPI.getInstance().isWilderness(e.getBlock().getLocation())) {
             e.setCancelled(true);
-            API.sendErrorMessage(e.getPlayer(),"Das darfst du in der Wildnis nicht tun§8!",false);
+            Player p = e.getPlayer();
+            User u = Zyneon.getAPI().getOnlineUser(p.getUniqueId());
+            u.sendErrorMessage("Das darfst du in der Wildnis nicht tun§8!");
         }
     }
 
@@ -25,7 +30,9 @@ public class WorldChange implements Listener {
     public void onBreak(BlockPlaceEvent e) {
         if(TownyAPI.getInstance().isWilderness(e.getBlock().getLocation())) {
             e.setCancelled(true);
-            API.sendErrorMessage(e.getPlayer(),"Das darfst du in der Wildnis nicht tun§8!",false);
+            Player p = e.getPlayer();
+            User u = Zyneon.getAPI().getOnlineUser(p.getUniqueId());
+            u.sendErrorMessage("Das darfst du in der Wildnis nicht tun§8!");
         }
     }
 
@@ -35,7 +42,9 @@ public class WorldChange implements Listener {
             if (e.getClickedBlock() != null) {
                 if (TownyAPI.getInstance().isWilderness(e.getClickedBlock().getLocation())) {
                     e.setCancelled(true);
-                    API.sendErrorMessage(e.getPlayer(), "Das darfst du in der Wildnis nicht tun§8!", false);
+                    Player p = e.getPlayer();
+                    User u = Zyneon.getAPI().getOnlineUser(p.getUniqueId());
+                    u.sendErrorMessage("Das darfst du in der Wildnis nicht tun§8!");
                 }
             }
         }

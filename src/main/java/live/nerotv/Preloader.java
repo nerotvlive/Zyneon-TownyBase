@@ -1,14 +1,13 @@
 package live.nerotv;
 
 import live.nerotv.townybase.Main;
-import live.nerotv.townybase.api.API;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Preloader extends JavaPlugin {
 
-    private static PluginManager pluginManager = Bukkit.getPluginManager();
+    private static final PluginManager pluginManager = Bukkit.getPluginManager();
     private static String ver;
     private static String name;
     private static String author;
@@ -17,10 +16,9 @@ public final class Preloader extends JavaPlugin {
     public static String getPluginName() { return name; }
     public static String getAuthor() { return author; }
     public static Preloader getInstance() { return instance; }
-    public static PluginManager getPluginManager() { return pluginManager; }
 
     private void sendMessage(String message) {
-        API.sendErrorMessage("§7[Towny] §e[PRELOADER] §7"+message);
+        Bukkit.getConsoleSender().sendMessage("§7[Towny] §e[PRELOADER] §7"+message);
     }
 
     @Override

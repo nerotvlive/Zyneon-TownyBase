@@ -1,9 +1,8 @@
 package live.nerotv.townybase;
 
+import com.zyneonstudios.api.Zyneon;
 import live.nerotv.Preloader;
 import live.nerotv.townybase.api.API;
-import live.nerotv.townybase.api.ConfigAPI;
-import live.nerotv.townybase.api.MySQL;
 import live.nerotv.townybase.commands.Balance;
 import live.nerotv.townybase.commands.Check;
 import live.nerotv.townybase.economy.Economy;
@@ -14,6 +13,7 @@ import live.nerotv.townybase.manager.BroadcastManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.ServicePriority;
+
 import static org.bukkit.Bukkit.getServer;
 
 public class Main {
@@ -28,35 +28,35 @@ public class Main {
 
     public static void onLoad() {
         API.sendInit(false);
-        API.sendMessage(" §0 ");
-        API.sendMessage(" §0 ");
-        API.sendMessage("Lade plugin...");
-        API.sendMessage(" §0 ");
-        API.sendMessage("Config-Datei wird überprüft und ersellt, ergänzt oder korrigiert...");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage("Lade plugin...");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage("Config-Datei wird überprüft und ersellt, ergänzt oder korrigiert...");
         API.initConfig();
-        API.sendMessage("Config-Datei wurde initialisiert!");
-        API.sendMessage("Plugin geladen! ");
-        API.sendMessage(" §0 ");
-        API.sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage("Config-Datei wurde initialisiert!");
+        Zyneon.getZyneonServer().sendMessage("Plugin geladen! ");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
         API.sendInit(false);
     }
 
     public static void onEnable() {
         API.sendInit(true);
-        API.sendMessage(" §0 ");
-        API.sendMessage(" §0 ");
-        API.sendMessage("Aktiviere plugin...");
-        API.date = API.getTime();
-        API.sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage("Aktiviere plugin...");
+        API.date = Zyneon.getAPI().getTime();
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
         API.initConfig();
-        ConfigAPI.reloadConfig(API.Config,API.cfg);
+        API.config.reloadConfig();
         setupEconomy();
         initCommands();
         initListener();
         BroadcastManager.start();
-        API.sendMessage("Plugin aktiviert!");
-        API.sendMessage(" §0 ");
-        API.sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage("Plugin aktiviert!");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
         API.sendInit(true);
     }
 
@@ -64,36 +64,30 @@ public class Main {
         API.sendInit(true);
         vaultImpl = null;
         eco = null;
-        if(API.mySQL) {
-            if(MySQL.isConnected()) {
-                MySQL.disconnect();
-            }
-        }
         API.sendInit(true);
     }
 
     private static void initCommands() {
-        API.sendMessage("§fLade Kommandos...");
+        Zyneon.getZyneonServer().sendMessage("§fLade Kommandos...");
         API.initCommand("Balance",new Balance());
         API.initCommand("Check",new Check());
-        API.sendMessage("§fKommandos geladen!");
-        API.sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage("§fKommandos geladen!");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
     }
 
     private static void initListener() {
-        API.sendMessage("§fLade Eventlistener...");
-        API.initListener("PlayerChat",new PlayerChat());
-        API.initListener("PlayerJoin",new PlayerJoin());
-        API.initListener("PlayerQuit",new PlayerQuit());
-        API.initListener("PlayerTown",new PlayerTown());
-        API.initListener("TownNation",new TownNation());
-        API.initListener("WorldChange",new WorldChange());
-        API.sendMessage("§fEventlistener geladen!");
-        API.sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage("§fLade Eventlistener...");
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerChat(),Preloader.getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerJoin(),Preloader.getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerQuit(),Preloader.getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerTown(),Preloader.getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new TownNation(),Preloader.getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new WorldChange(),Preloader.getInstance());
+        Zyneon.getZyneonServer().sendMessage("§fEventlistener geladen!");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
     }
 
     private static void setupEconomy() {
-        API.sendMessage("Versuche eine MySQL-Verbindung herzustellen...");
         boolean setupEconomy;
         eco = new Ecosystem();
         vaultImpl = new VaultEco();
@@ -103,12 +97,10 @@ public class Main {
             getServer().getServicesManager().register(net.milkbowl.vault.economy.Economy.class,vaultImpl,getInstance(), ServicePriority.Normal);
             setupEconomy = true;
         }
-        if(setupEconomy) {
-            API.sendMessage("§fMySQL-Verbindung wurde erfolgreich hergestellt§8!");
-        } else {
-            API.sendMessage("§cMySQL-Verbindung konnte nicht hergestellt werden§8!");
+        if(!setupEconomy) {
+            Zyneon.getZyneonServer().sendMessage("§cEconomy konnte nicht gestartet werden.§8!");
         }
-        API.sendMessage(" §0 ");
+        Zyneon.getZyneonServer().sendMessage(" §0 ");
     }
 
     public static void setPrefix(Player player) {
