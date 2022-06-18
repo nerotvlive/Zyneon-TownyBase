@@ -18,9 +18,9 @@ public class Balance implements CommandExecutor {
     private void sendSyntax(CommandSender s) {
         if(s instanceof Player p) {
             User u = Zyneon.getAPI().getOnlineUser(p.getUniqueId());
-            u.sendErrorMessage("§4Fehler: §c/balance §7[Spieler§f/set/add/remove§7] §f(Spieler) (Wert)");
+            u.sendErrorMessage("§4Fehler§8: §c/balance §7[Spieler§f/set/add/remove§7] §f(Spieler) (Wert)");
         } else {
-            Zyneon.getZyneonServer().sendErrorMessage("§4Fehler: §c/balance [set/add/remove/§fSpieler§c] §c[Spieler] [Wert]");
+            Zyneon.getZyneonServer().sendErrorMessage("§4Fehler§8: §c/balance [set/add/remove/§fSpieler§c] §c[Spieler] [Wert]");
         }
     }
 

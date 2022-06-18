@@ -3,7 +3,6 @@ package live.nerotv.townybase.listener;
 import com.palmergames.bukkit.towny.TownyAPI;
 import com.zyneonstudios.api.Zyneon;
 import com.zyneonstudios.api.utils.user.User;
-import live.nerotv.townybase.api.API;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

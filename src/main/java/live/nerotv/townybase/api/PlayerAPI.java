@@ -52,14 +52,14 @@ public class PlayerAPI {
         Scoreboard board = player.getScoreboard();
         Objective boardContent = board.getObjective("TOWNY");
         board.resetScores("TOWNY");
-        Score utralo = boardContent.getScore("§fServer§7-§fIP§8:");
+        Score zyneon = boardContent.getScore("§fServer§7-§fIP§8:");
         boardContent.setDisplayName(API.animatedTowny());
-        Score utraloContent = boardContent.getScore("§ezyneon.de");
+        Score zyneonContent = boardContent.getScore("§ezyneonstudios.com");
         Score placeholder0 = boardContent.getScore("§0");
         Score placeholder1 = boardContent.getScore("§1");
         Score placeholder2 = boardContent.getScore("§2");
         Score placeholder3 = boardContent.getScore("§3");
-        Score placeholder4 = boardContent.getScore("§4");
+        //Score placeholder4 = boardContent.getScore("§4");
         Score placeholder5 = boardContent.getScore("§5");
         Score money = boardContent.getScore("§fGeld§8:");
         int moneyInt = (int) Main.getEco().getBalance(player.getUniqueId()).getBalance();
@@ -71,8 +71,12 @@ public class PlayerAPI {
         Score levelContent = boardContent.getScore("§e"+API.date);
         Score nation = boardContent.getScore("§fNation§8:");
         String nationstring;
-        if(TownyAPI.getInstance().getResident(player).hasNation()) {
-            nationstring = getNation(player);
+        if(TownyAPI.getInstance().getResident(player)!=null) {
+            if (TownyAPI.getInstance().getResident(player).hasNation()) {
+                nationstring = getNation(player);
+            } else {
+                nationstring = "Keine Nation";
+            }
         } else {
             nationstring = "Keine Nation";
         }
@@ -83,7 +87,11 @@ public class PlayerAPI {
             townstring = "Keine Stadt";
         } else {
             try {
-                if(!TownyAPI.getInstance().getResident(player).getTown().hasNation()) {
+                if(TownyAPI.getInstance().getResident(player)!=null) {
+                    if (!TownyAPI.getInstance().getResident(player).getTown().hasNation()) {
+                        nationstring = "Keine Nation";
+                    }
+                } else {
                     nationstring = "Keine Nation";
                 }
             } catch (NotRegisteredException e) {
@@ -106,8 +114,8 @@ public class PlayerAPI {
         rank.setScore(5);
         rankContent.setScore(4);
         placeholder3.setScore(3);
-        utralo.setScore(2);
-        utraloContent.setScore(1);
+        zyneon.setScore(2);
+        zyneonContent.setScore(1);
         Main.setPrefix(player);
     }
 

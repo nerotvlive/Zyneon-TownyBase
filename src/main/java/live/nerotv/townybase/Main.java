@@ -4,7 +4,6 @@ import com.zyneonstudios.api.Zyneon;
 import live.nerotv.Preloader;
 import live.nerotv.townybase.api.API;
 import live.nerotv.townybase.commands.Balance;
-import live.nerotv.townybase.commands.Check;
 import live.nerotv.townybase.economy.Economy;
 import live.nerotv.townybase.economy.Ecosystem;
 import live.nerotv.townybase.economy.VaultEco;
@@ -13,7 +12,6 @@ import live.nerotv.townybase.manager.BroadcastManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.ServicePriority;
-
 import static org.bukkit.Bukkit.getServer;
 
 public class Main {
@@ -70,7 +68,6 @@ public class Main {
     private static void initCommands() {
         Zyneon.getZyneonServer().sendMessage("§fLade Kommandos...");
         API.initCommand("Balance",new Balance());
-        API.initCommand("Check",new Check());
         Zyneon.getZyneonServer().sendMessage("§fKommandos geladen!");
         Zyneon.getZyneonServer().sendMessage(" §0 ");
     }
@@ -89,7 +86,7 @@ public class Main {
 
     private static void setupEconomy() {
         boolean setupEconomy;
-        eco = new Ecosystem();
+        eco = (Economy) new Ecosystem();
         vaultImpl = new VaultEco();
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
             setupEconomy = false;

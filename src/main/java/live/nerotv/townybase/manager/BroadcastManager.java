@@ -48,5 +48,4 @@ public class BroadcastManager {
             autoRenew(scheduler);
         },15*20);
     }
-
 }

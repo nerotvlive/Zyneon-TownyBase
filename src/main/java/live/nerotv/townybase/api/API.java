@@ -16,8 +16,8 @@ public class API {
     public static void initConfig() {
 
         //TABLIST
-        config.checkEntry("Core.Tablist.Header"," \n §5zyneon.de §8● §7Minecraft - aber mehr \n ");
-        config.checkEntry("Core.Tablist.Footer"," \n §9https://www.zyneon.de \n §7sponsored by §ftube-hosting.de \n ");
+        config.checkEntry("Core.Tablist.Header"," \n §5zyneonstudios.com §8● §7Minecraft - aber mehr \n ");
+        config.checkEntry("Core.Tablist.Footer"," \n §9https://www.zyneonstudios.com \n §7sponsored by §ftube-hosting.de \n ");
 
         //INIT-TEXT
         config.checkEntry("Core.Init.Line01","§5█§5█§5█§5█§5█§5█§5█§8╗§5█§5█§8╗§8░§8░§8░§5█§5█§8╗§5█§5█§5█§8╗§8░§8░§5█§5█§8╗§5█§5█§5█§5█§5█§5█§5█§8╗§8░§5█§5█§5█§5█§5█§8╗§8░§5█§5█§5█§8╗§8░§8░§5█§5█§8╗");
