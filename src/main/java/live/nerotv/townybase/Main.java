@@ -4,6 +4,7 @@ import com.zyneonstudios.api.Zyneon;
 import live.nerotv.Preloader;
 import live.nerotv.townybase.api.API;
 import live.nerotv.townybase.commands.Balance;
+import live.nerotv.townybase.commands.Pay;
 import live.nerotv.townybase.economy.Economy;
 import live.nerotv.townybase.economy.Ecosystem;
 import live.nerotv.townybase.economy.VaultEco;
@@ -68,6 +69,7 @@ public class Main {
     private static void initCommands() {
         Zyneon.getZyneonServer().sendMessage("§fLade Kommandos...");
         API.initCommand("Balance",new Balance());
+        API.initCommand("Pay",new Pay());
         Zyneon.getZyneonServer().sendMessage("§fKommandos geladen!");
         Zyneon.getZyneonServer().sendMessage(" §0 ");
     }

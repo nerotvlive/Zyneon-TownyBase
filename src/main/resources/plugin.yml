@@ -1,5 +1,5 @@
 name: TownyBase
-version: 0.2.1
+version: 0.2.2
 website: https://nerotv.live/townybase
 api-version: 1.18
 description: TownyBase by nerotvlive
@@ -20,3 +20,4 @@ depend:
 commands:
   Balance:
     aliases: [bal,mon,geld,money,munze,munzen,muenze,muenzen,münzen,münze]
+  Pay:
