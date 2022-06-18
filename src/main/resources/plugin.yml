@@ -1,5 +1,5 @@
 name: TownyBase
-version: 0.0.34
+version: 0.1.0
 website: https://nerotv.live/townybase
 api-version: 1.18
 description: TownyBase by nerotvlive
@@ -16,6 +16,7 @@ depend:
 
 loadbefore:
   - GChestShop
+  - Towny
 
 commands:
   Balance:
