@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nerotvlive</groupId>
     <artifactId>TownyBase</artifactId>
-    <version>beta</version>
+    <version>1.0-1.19-EXPERIMENTAL</version>
     <packaging>jar</packaging>
     <name>TownyBase</name>
     <properties>

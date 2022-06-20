@@ -1,7 +1,7 @@
 name: TownyBase
-version: 0.2.2
+version: '${project.version}'
 website: https://nerotv.live/townybase
-api-version: 1.18
+api-version: 1.19
 description: TownyBase by nerotvlive
 author: nerotvlive
 main: live.nerotv.Preloader
