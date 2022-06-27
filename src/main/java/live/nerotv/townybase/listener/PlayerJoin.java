@@ -15,7 +15,11 @@ public class PlayerJoin implements Listener {
         Player p = e.getPlayer();
         PlayerAPI.renewScoreboard(p);
         e.setJoinMessage(null);
-        Bukkit.broadcastMessage("§8» §a"+p.getName());
+        for(Player all:Bukkit.getOnlinePlayers()) {
+            if(all.getUniqueId()!=p.getUniqueId()) {
+                all.sendMessage("§8» §a"+p.getName());
+            }
+        }
         API.setTablist();
     }
 }
