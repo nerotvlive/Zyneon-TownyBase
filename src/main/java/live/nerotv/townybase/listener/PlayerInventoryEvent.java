@@ -25,14 +25,17 @@ public class PlayerInventoryEvent implements Listener {
                     e.setCancelled(true);
                     u.setJob(Jobs.JobType.Holzfäller);
                     u.sendMessage("§7Du hast nun den Job §e"+u.getJob()+"§8!");
+                    p.closeInventory();
                 } else if(itemMeta.getDisplayName().equals(ItemManager.minerItem(u).getItemMeta().getDisplayName())) {
                     e.setCancelled(true);
                     u.setJob(Jobs.JobType.Minenarbeiter);
                     u.sendMessage("§7Du hast nun den Job §e"+u.getJob()+"§8!");
+                    p.closeInventory();
                 } else if(itemMeta.getDisplayName().equals(ItemManager.quitJobItem(u).getItemMeta().getDisplayName())) {
                     e.setCancelled(true);
                     u.setJob(Jobs.JobType.Arbeitslos);
                     u.sendErrorMessage("§cDu hast deinen Job gekündigt§8!");
+                    p.closeInventory();
                 }
             }
         }
