@@ -20,7 +20,7 @@ public class WoodcutterBlockEvent implements Listener {
         if(u.getJob().equals(Jobs.JobType.Holzfäller)) {
             Material type = e.getBlock().getType();
             if(type.equals(Material.OAK_LOG)||type.equals(Material.BIRCH_LOG)||type.equals(Material.SPRUCE_LOG)||type.equals(Material.JUNGLE_LOG)||type.equals(Material.ACACIA_LOG)||type.equals(Material.DARK_OAK_LOG)||type.equals(Material.MANGROVE_LOG)||type.equals(Material.MANGROVE_ROOTS)||type.equals(Material.MUDDY_MANGROVE_ROOTS)||type.equals(Material.WARPED_STEM)||type.equals(Material.CRIMSON_STEM)||type.toString().toUpperCase().contains("STRIPPED")) {
-                int i = ThreadLocalRandom.current().nextInt(1,4);
+                int i = ThreadLocalRandom.current().nextInt(1,2);
                 Main.getEco().set(p.getUniqueId(),Main.getEco().getBalance(p.getUniqueId()).getBalance()+i);
                 p.sendActionBar("§e+"+i+"§e Münzen §8(§7"+Main.getEco().getBalance(p.getUniqueId()).getBalance()+"§8)");
             }

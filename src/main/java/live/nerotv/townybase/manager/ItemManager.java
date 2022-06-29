@@ -48,7 +48,7 @@ public class ItemManager {
         if(u.getJob().equals(Jobs.JobType.Minenarbeiter)) {
             item = getGlowStack(createGuiItem(Material.COAL_ORE,"§bMinenarbeiter", "§0","§8» §aDu hast diesen Job§8","§0","§7Erhalte Geld für das Abbauen von Erzen und Steinen.","§0"));
         } else {
-            item = createGuiItem(Material.OAK_LOG,"§bMinenarbeiter", "§0","§7Erhalte Geld für das Abbauen von Erzen und Steinen.","§0");
+            item = createGuiItem(Material.COAL_ORE,"§bMinenarbeiter", "§0","§7Erhalte Geld für das Abbauen von Erzen und Steinen.","§0");
         }
         return item;
     }

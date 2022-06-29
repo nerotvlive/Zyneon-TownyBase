@@ -2,8 +2,6 @@ package live.nerotv.townybase.economy.moneysystem;
 
 import com.zyneonstudios.api.sql.SQLite;
 import live.nerotv.townybase.Main;
-import live.nerotv.townybase.api.PlayerAPI;
-import org.bukkit.Bukkit;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,9 +103,6 @@ public class Ecosystem implements Economy {
                 ps.setString(1, SID);
                 ps.setDouble(2, amount);
                 ps.executeUpdate();
-                if(Bukkit.getPlayer(uuid)!=null) {
-                    PlayerAPI.renewScoreboard(Bukkit.getPlayer(uuid));
-                }
                 return true;
             } catch (SQLException e) {
                 e.printStackTrace();

@@ -4,6 +4,7 @@ import com.zyneonstudios.api.Zyneon;
 import live.nerotv.Preloader;
 import live.nerotv.townybase.api.API;
 import live.nerotv.townybase.commands.BalanceCommand;
+import live.nerotv.townybase.commands.BuildCommand;
 import live.nerotv.townybase.commands.JobCommand;
 import live.nerotv.townybase.commands.PayCommand;
 import live.nerotv.townybase.economy.jobs.Jobs;
@@ -76,6 +77,7 @@ public class Main {
     private static void initCommands() {
         Zyneon.getZyneonServer().sendMessage("§fLade Kommandos...");
         API.initCommand("Balance",new BalanceCommand());
+        API.initCommand("Build",new BuildCommand());
         API.initCommand("Job",new JobCommand());
         API.initCommand("Pay",new PayCommand());
         Zyneon.getZyneonServer().sendMessage("§fKommandos geladen!");
@@ -85,6 +87,7 @@ public class Main {
     private static void initListener() {
         Zyneon.getZyneonServer().sendMessage("§fLade Eventlistener...");
         Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerChatEvent(),getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerInteractEvent(),getInstance());
         Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerInventoryEvent(),getInstance());
         Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerJoinEvent(),getInstance());
         Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerQuitEvent(),getInstance());

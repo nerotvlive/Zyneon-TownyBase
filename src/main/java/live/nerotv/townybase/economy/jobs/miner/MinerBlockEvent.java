@@ -46,7 +46,7 @@ public class MinerBlockEvent implements Listener {
                         p.sendActionBar("§c-" + i + "§c Münzen §8(§7" + Main.getEco().getBalance(p.getUniqueId()).getBalance() + "§8)");
                         return;
                     }
-                    int ii = ThreadLocalRandom.current().nextInt(4, 8);
+                    int ii = ThreadLocalRandom.current().nextInt(6, 26);
                     Main.getEco().set(p.getUniqueId(), Main.getEco().getBalance(p.getUniqueId()).getBalance() + ii);
                     p.sendActionBar("§e+" + ii + "§e Münzen §8(§7" + Main.getEco().getBalance(p.getUniqueId()).getBalance() + "§8)");
                 }

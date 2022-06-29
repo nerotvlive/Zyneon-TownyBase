@@ -1,5 +1,6 @@
 package live.nerotv.townybase.commands;
 
+import com.zyneonstudios.api.utils.Strings;
 import live.nerotv.townybase.api.API;
 import live.nerotv.townybase.manager.InventoryManager;
 import live.nerotv.townybase.utils.TownyUser;
@@ -32,7 +33,7 @@ public class JobCommand implements CommandExecutor {
                     }
                 }
             } else {
-
+                s.sendMessage(Strings.needPlayer());
             }
         }
         return false;
