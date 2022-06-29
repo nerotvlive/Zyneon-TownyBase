@@ -21,3 +21,5 @@ commands:
   Balance:
     aliases: [bal,mon,geld,money,munze,munzen,muenze,muenzen,münzen,münze]
   Pay:
+  Job:
+    aliases: [arbeit,beruf]

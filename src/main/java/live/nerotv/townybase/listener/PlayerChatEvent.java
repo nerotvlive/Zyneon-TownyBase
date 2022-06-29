@@ -10,7 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-public class PlayerChat implements Listener {
+public class PlayerChatEvent implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
@@ -34,7 +34,7 @@ public class PlayerChat implements Listener {
                 Name = "§e"+PlayerAPI.getTown(p)+" §8● §f" + p.getName();
             }
         } else {
-            Name = "§eObdachtlos §8● §f" + p.getName();
+            Name = "§eObdachlos §8● §f" + p.getName();
         }
         String MSG;
         if(p.hasPermission("zyneon.team")) {

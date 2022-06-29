@@ -13,7 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class Balance implements CommandExecutor {
+public class BalanceCommand implements CommandExecutor {
 
     private void sendSyntax(CommandSender s) {
         if(s instanceof Player p) {

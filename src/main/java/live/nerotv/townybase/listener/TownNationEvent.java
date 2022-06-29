@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-public class TownNation implements Listener {
+public class TownNationEvent implements Listener {
 
     @EventHandler
     public void onNationJoin(NationAddTownEvent e) {

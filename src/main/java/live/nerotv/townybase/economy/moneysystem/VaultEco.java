@@ -1,4 +1,4 @@
-package live.nerotv.townybase.economy;
+package live.nerotv.townybase.economy.moneysystem;
 
 import live.nerotv.townybase.Main;
 import net.milkbowl.vault.economy.Economy;

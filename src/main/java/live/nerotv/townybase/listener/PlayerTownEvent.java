@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import java.util.ArrayList;
 
-public class PlayerTown implements Listener {
+public class PlayerTownEvent implements Listener {
 
     @EventHandler
     public void onTownJoin(PlayerEnterTownEvent e) {

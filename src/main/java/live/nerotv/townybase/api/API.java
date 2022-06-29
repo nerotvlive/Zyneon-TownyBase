@@ -3,15 +3,20 @@ package live.nerotv.townybase.api;
 import com.zyneonstudios.api.Zyneon;
 import com.zyneonstudios.api.configuration.Config;
 import live.nerotv.townybase.Main;
+import live.nerotv.townybase.utils.TownyUser;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
+
+import java.util.HashMap;
 import java.util.Objects;
+import java.util.UUID;
 
 public class API {
 
     public static Config config = new Config("plugins/TownyBase/config.yml");
     public static String date;
+    public static HashMap<UUID, TownyUser> townyUsers = new HashMap<>();
 
     public static void initConfig() {
 

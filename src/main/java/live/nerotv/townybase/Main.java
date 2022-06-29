@@ -3,13 +3,16 @@ package live.nerotv.townybase;
 import com.zyneonstudios.api.Zyneon;
 import live.nerotv.Preloader;
 import live.nerotv.townybase.api.API;
-import live.nerotv.townybase.commands.Balance;
-import live.nerotv.townybase.commands.Pay;
-import live.nerotv.townybase.economy.Economy;
-import live.nerotv.townybase.economy.Ecosystem;
-import live.nerotv.townybase.economy.VaultEco;
+import live.nerotv.townybase.commands.BalanceCommand;
+import live.nerotv.townybase.commands.PayCommand;
+import live.nerotv.townybase.economy.jobs.miner.MinerBlockEvent;
+import live.nerotv.townybase.economy.jobs.woodcutter.WoodcutterBlockEvent;
+import live.nerotv.townybase.economy.moneysystem.Economy;
+import live.nerotv.townybase.economy.moneysystem.Ecosystem;
+import live.nerotv.townybase.economy.moneysystem.VaultEco;
 import live.nerotv.townybase.listener.*;
 import live.nerotv.townybase.manager.BroadcastManager;
+import live.nerotv.townybase.utils.Glow;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.ServicePriority;
@@ -49,6 +52,7 @@ public class Main {
         API.date = Zyneon.getAPI().getTime();
         Zyneon.getZyneonServer().sendMessage(" §0 ");
         API.config.reloadConfig();
+        Glow.registerGlow();
         setupEconomy();
         initCommands();
         initListener();
@@ -68,20 +72,23 @@ public class Main {
 
     private static void initCommands() {
         Zyneon.getZyneonServer().sendMessage("§fLade Kommandos...");
-        API.initCommand("Balance",new Balance());
-        API.initCommand("Pay",new Pay());
+        API.initCommand("Balance",new BalanceCommand());
+        API.initCommand("Pay",new PayCommand());
         Zyneon.getZyneonServer().sendMessage("§fKommandos geladen!");
         Zyneon.getZyneonServer().sendMessage(" §0 ");
     }
 
     private static void initListener() {
         Zyneon.getZyneonServer().sendMessage("§fLade Eventlistener...");
-        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerChat(),Preloader.getInstance());
-        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerJoin(),Preloader.getInstance());
-        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerQuit(),Preloader.getInstance());
-        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerTown(),Preloader.getInstance());
-        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new TownNation(),Preloader.getInstance());
-        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new WorldChange(),Preloader.getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerChatEvent(),getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerInventoryEvent(),getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerJoinEvent(),getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerQuitEvent(),getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new PlayerTownEvent(),getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new TownNationEvent(),getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new WorldChangeEvent(),getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new MinerBlockEvent(),getInstance());
+        Zyneon.getAPI().initListenerClass(Bukkit.getPluginManager(),new WoodcutterBlockEvent(),getInstance());
         Zyneon.getZyneonServer().sendMessage("§fEventlistener geladen!");
         Zyneon.getZyneonServer().sendMessage(" §0 ");
     }
