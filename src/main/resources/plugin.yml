@@ -22,4 +22,4 @@ commands:
     aliases: [bal,mon,geld,money,munze,munzen,muenze,muenzen,münzen,münze]
   Pay:
   Job:
-    aliases: [arbeit,beruf]
+    aliases: [arbeit,beruf,jobs]

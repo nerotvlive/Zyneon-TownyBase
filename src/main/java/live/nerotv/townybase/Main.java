@@ -4,6 +4,7 @@ import com.zyneonstudios.api.Zyneon;
 import live.nerotv.Preloader;
 import live.nerotv.townybase.api.API;
 import live.nerotv.townybase.commands.BalanceCommand;
+import live.nerotv.townybase.commands.JobCommand;
 import live.nerotv.townybase.commands.PayCommand;
 import live.nerotv.townybase.economy.jobs.Jobs;
 import live.nerotv.townybase.economy.jobs.miner.MinerBlockEvent;
@@ -75,6 +76,7 @@ public class Main {
     private static void initCommands() {
         Zyneon.getZyneonServer().sendMessage("§fLade Kommandos...");
         API.initCommand("Balance",new BalanceCommand());
+        API.initCommand("Job",new JobCommand());
         API.initCommand("Pay",new PayCommand());
         Zyneon.getZyneonServer().sendMessage("§fKommandos geladen!");
         Zyneon.getZyneonServer().sendMessage(" §0 ");
