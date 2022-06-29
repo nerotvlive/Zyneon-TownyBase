@@ -1,7 +1,9 @@
 package live.nerotv.townybase.commands;
 
 import live.nerotv.townybase.api.API;
+import live.nerotv.townybase.manager.InventoryManager;
 import live.nerotv.townybase.utils.TownyUser;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -23,7 +25,8 @@ public class JobCommand implements CommandExecutor {
                     }
                 } else {
                     if(args[0].equalsIgnoreCase("select")) {
-
+                        p.openInventory(InventoryManager.jobSelectInventory(p));
+                        p.playSound(p.getLocation(),Sound.ENTITY_CHICKEN_EGG,100,100);
                     } else {
                         u.sendErrorMessage("Meintest du §4/job select§8?");
                     }
