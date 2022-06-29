@@ -1,28 +1,28 @@
 package live.nerotv.townybase.utils;
 
 import com.zyneonstudios.api.utils.user.User;
-import live.nerotv.townybase.economy.jobs.Job;
+import live.nerotv.townybase.economy.jobs.Jobs;
 import java.util.UUID;
 
 public class TownyUser extends User {
 
-    Job.JobType jobType;
+    Jobs.JobType jobType;
 
     public TownyUser(UUID uuid) {
         super(uuid);
-        this.jobType = Job.getJob(uuid);
+        this.jobType = Jobs.getJob(uuid);
     }
 
     public boolean hasJob() {
-        return Job.hasJob(getUUID());
+        return Jobs.hasJob(getUUID());
     }
 
-    public Job.JobType getJob() {
+    public Jobs.JobType getJob() {
         return this.jobType;
     }
 
-    public void setJob(Job.JobType jobType) {
-        Job.setJob(getUUID(),jobType);
+    public void setJob(Jobs.JobType jobType) {
+        Jobs.setJob(getUUID(),jobType);
         this.jobType = jobType;
     }
 

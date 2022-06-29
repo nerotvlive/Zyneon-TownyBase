@@ -1,7 +1,7 @@
 package live.nerotv.townybase.manager;
 
 import live.nerotv.townybase.Main;
-import live.nerotv.townybase.economy.jobs.Job;
+import live.nerotv.townybase.economy.jobs.Jobs;
 import live.nerotv.townybase.utils.Glow;
 import live.nerotv.townybase.utils.TownyUser;
 import org.bukkit.Material;
@@ -35,7 +35,7 @@ public class ItemManager {
 
     public static ItemStack woodcutterItem(TownyUser u) {
         ItemStack item;
-        if(u.getJob().equals(Job.JobType.Holzfäller)) {
+        if(u.getJob().equals(Jobs.JobType.Holzfäller)) {
             item = getGlowStack(createGuiItem(Material.OAK_LOG,"§bHolzfäller", "§0","§8» §aDu hast diesen Job§8","§0","§7Erhalte Geld für das Fällen von Bäumen.","§0"));
         } else {
             item = createGuiItem(Material.OAK_LOG,"§bHolzfäller", "§0","§7Erhalte Geld für das Fällen von Bäumen.","§0");
@@ -45,7 +45,7 @@ public class ItemManager {
 
     public static ItemStack minerItem(TownyUser u) {
         ItemStack item;
-        if(u.getJob().equals(Job.JobType.Minenarbeiter)) {
+        if(u.getJob().equals(Jobs.JobType.Minenarbeiter)) {
             item = getGlowStack(createGuiItem(Material.COAL_ORE,"§bMinenarbeiter", "§0","§8» §aDu hast diesen Job§8","§0","§7Erhalte Geld für das Abbauen von Erzen und Steinen.","§0"));
         } else {
             item = createGuiItem(Material.OAK_LOG,"§bMinenarbeiter", "§0","§7Erhalte Geld für das Abbauen von Erzen und Steinen.","§0");

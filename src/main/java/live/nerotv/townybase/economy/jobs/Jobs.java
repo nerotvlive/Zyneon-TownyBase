@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Job {
+public class Jobs {
 
     public static SQLite jobbase;
 

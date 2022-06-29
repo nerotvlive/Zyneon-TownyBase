@@ -5,6 +5,7 @@ import live.nerotv.Preloader;
 import live.nerotv.townybase.api.API;
 import live.nerotv.townybase.commands.BalanceCommand;
 import live.nerotv.townybase.commands.PayCommand;
+import live.nerotv.townybase.economy.jobs.Jobs;
 import live.nerotv.townybase.economy.jobs.miner.MinerBlockEvent;
 import live.nerotv.townybase.economy.jobs.woodcutter.WoodcutterBlockEvent;
 import live.nerotv.townybase.economy.moneysystem.Economy;
@@ -53,6 +54,7 @@ public class Main {
         Zyneon.getZyneonServer().sendMessage(" §0 ");
         API.config.reloadConfig();
         Glow.registerGlow();
+        Jobs.init();
         setupEconomy();
         initCommands();
         initListener();
