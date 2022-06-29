@@ -4,6 +4,8 @@ import com.palmergames.bukkit.towny.TownyAPI;
 import com.palmergames.bukkit.towny.object.Resident;
 import com.zyneonstudios.api.utils.user.User;
 import live.nerotv.townybase.economy.jobs.Jobs;
+import org.bukkit.Bukkit;
+
 import java.util.UUID;
 
 public class TownyUser extends User {
@@ -41,6 +43,15 @@ public class TownyUser extends User {
     }
 
     public void setBuild(boolean build) {
+        if(build) {
+            if (getPlayer() != null) {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp u " + getPlayer().getName() + " permission set towny.*");
+            }
+        } else {
+            if (getPlayer() != null) {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp u " + getPlayer().getName() + " permission unset towny.*");
+            }
+        }
         this.build = build;
     }
 
