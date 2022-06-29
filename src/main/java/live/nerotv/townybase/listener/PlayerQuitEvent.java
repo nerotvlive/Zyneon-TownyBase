@@ -15,6 +15,7 @@ public class PlayerQuitEvent implements Listener {
         TownyUser u = API.townyUsers.get(p.getUniqueId());
         e.setQuitMessage(null);
         Bukkit.broadcastMessage("§8« §c"+p.getName());
+        u.setBuild(false);
         API.townyUsers.remove(p.getUniqueId());
         u.destroy();
     }

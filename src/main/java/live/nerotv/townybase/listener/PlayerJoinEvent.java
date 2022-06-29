@@ -16,6 +16,7 @@ public class PlayerJoinEvent implements Listener {
         API.townyUsers.remove(p.getUniqueId());
         API.townyUsers.put(p.getUniqueId(),new TownyUser(p.getUniqueId()));
         TownyUser u = API.townyUsers.get(p.getUniqueId());
+        u.setBuild(false);
         PlayerAPI.renewScoreboard(p);
         e.setJoinMessage(null);
         for(Player all:Bukkit.getOnlinePlayers()) {
