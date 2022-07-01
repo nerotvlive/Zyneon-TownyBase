@@ -1,6 +1,6 @@
 package live.nerotv.townybase.economy.moneysystem;
 
-import com.zyneonstudios.api.sql.SQLite;
+import com.zyneonstudios.api.utils.sql.SQLite;
 import live.nerotv.townybase.Main;
 
 import java.sql.PreparedStatement;

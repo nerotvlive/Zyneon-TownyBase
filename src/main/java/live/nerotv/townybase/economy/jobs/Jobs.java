@@ -1,6 +1,6 @@
 package live.nerotv.townybase.economy.jobs;
 
-import com.zyneonstudios.api.sql.SQLite;
+import com.zyneonstudios.api.utils.sql.SQLite;
 import live.nerotv.townybase.api.PlayerAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

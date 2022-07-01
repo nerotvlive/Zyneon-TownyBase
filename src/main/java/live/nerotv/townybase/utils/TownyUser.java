@@ -2,7 +2,7 @@ package live.nerotv.townybase.utils;
 
 import com.palmergames.bukkit.towny.TownyAPI;
 import com.palmergames.bukkit.towny.object.Resident;
-import com.zyneonstudios.api.utils.user.User;
+import com.zyneonstudios.api.paper.utils.user.User;
 import live.nerotv.townybase.economy.jobs.Jobs;
 import org.bukkit.Bukkit;
 

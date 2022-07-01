@@ -1,13 +1,12 @@
 package live.nerotv.townybase.api;
 
-import com.zyneonstudios.api.Zyneon;
-import com.zyneonstudios.api.configuration.Config;
+import com.zyneonstudios.api.paper.Zyneon;
+import com.zyneonstudios.api.paper.configuration.Config;
 import live.nerotv.townybase.Main;
 import live.nerotv.townybase.utils.TownyUser;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
-
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;

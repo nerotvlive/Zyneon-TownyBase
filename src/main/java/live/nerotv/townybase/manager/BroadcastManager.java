@@ -1,6 +1,6 @@
 package live.nerotv.townybase.manager;
 
-import com.zyneonstudios.api.Zyneon;
+import com.zyneonstudios.api.paper.Zyneon;
 import live.nerotv.townybase.Main;
 import live.nerotv.townybase.api.API;
 import live.nerotv.townybase.api.PlayerAPI;

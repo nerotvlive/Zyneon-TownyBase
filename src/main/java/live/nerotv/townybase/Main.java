@@ -1,6 +1,6 @@
 package live.nerotv.townybase;
 
-import com.zyneonstudios.api.Zyneon;
+import com.zyneonstudios.api.paper.Zyneon;
 import live.nerotv.Preloader;
 import live.nerotv.townybase.api.API;
 import live.nerotv.townybase.commands.BalanceCommand;

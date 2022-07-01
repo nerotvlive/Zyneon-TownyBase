@@ -1,8 +1,8 @@
 package live.nerotv.townybase.commands;
 
-import com.zyneonstudios.api.Zyneon;
+import com.zyneonstudios.api.paper.Zyneon;
 import com.zyneonstudios.api.utils.Strings;
-import com.zyneonstudios.api.utils.user.User;
+import com.zyneonstudios.api.paper.utils.user.User;
 import live.nerotv.townybase.Main;
 import live.nerotv.townybase.api.API;
 import org.bukkit.Bukkit;
